@@ -24,3 +24,10 @@ Exemplos:
 |    0  | beltrano    |
 |   -1  | cigano      |
 
+Cenario: Propondo uma sequencia de lances do mesmo usuario
+    Dado dois lances
+        | valor | nomeUsuario |
+        |  10.0 | beltrano    |
+        |  15.0 | beltrano    |
+    Quando propoe varios lances ao leilao
+    Entao o segundo lance nao eh aceito
