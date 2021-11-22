@@ -1,6 +1,5 @@
 package br.com.ivanfsilva.leilao.e2e.pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +11,7 @@ public class LeiloesPage {
 	private WebDriver driver;
 
 	private static String PAGE_URL = "http://localhost:8080/leiloes";
-	
+
 	public LeiloesPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -21,9 +20,11 @@ public class LeiloesPage {
 		driver.get(PAGE_URL);
 	}
 
-	public boolean existe(String nomeProduto, String valor, String usuario) {
-		return driver.getCurrentUrl().endsWith("/leiloes") && driver.getPageSource().contains(nomeProduto) && 
-				driver.getPageSource().contains(valor);
+	public boolean existe(String nome, String valor, String data, String usuario) {
+		return driver.getPageSource().contains(nome) &&
+				driver.getPageSource().contains(valor) &&
+				driver.getPageSource().contains(data) &&
+				driver.getPageSource().contains(usuario);
 	}
 
 	public boolean estaNaPaginaDeLeiloes() {
@@ -32,10 +33,10 @@ public class LeiloesPage {
 	}
 
 	public NovoLeilaoPage visitaPaginaParaCriarUmNovoLeilao() {
-		
+
 		WebDriverWait wait = new WebDriverWait(driver,5);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("novo_leilao_link")));
-		
+
 		WebElement href = driver.findElement(By.id("novo_leilao_link"));
 		wait.until(ExpectedConditions.elementToBeClickable(href));
 		href.click();
@@ -55,19 +56,19 @@ public class LeiloesPage {
 
 	public DetalhesDoLeilaoPage visitaPaginaDoLeilaoDo(String donoDoLeilao) throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver,5);
-		
+
 		String xpath = "//table[@class='table table-hover']/tbody/tr/td[contains(text(),'" +
-						donoDoLeilao+ "')]/following-sibling::td/a";
+				donoDoLeilao+ "')]/following-sibling::td/a";
 
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-		
+
 		WebElement href = driver.findElement(
 				By.xpath(xpath));
-		
+
 		wait.until(ExpectedConditions.elementToBeClickable(href));
 
 		href.click();
-		
+
 		return new DetalhesDoLeilaoPage(driver);
 	}
 
@@ -83,7 +84,7 @@ public class LeiloesPage {
 	}
 
 	public void esperaCarregarPaginaDeLeiloes() {
-		WebDriverWait wait = new WebDriverWait(driver,2);
+		WebDriverWait wait = new WebDriverWait(driver, 2);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Todos leilões')]")));
 	}
 }

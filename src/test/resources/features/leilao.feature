@@ -3,6 +3,9 @@
 @leilao
 Funcionalidade: Cadastrando um leilao
 
+  Contexto:
+    Dado um usuario logado
+
   Cenario: Um usuario logado pode cadastrar um leilao
     Dado um usuario logado
     Quando acessa a pagina de novo leilao
