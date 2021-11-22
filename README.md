@@ -67,6 +67,20 @@ O que foi utilizado na construção do projeto:
     $ git clone https://github.com/ivanfsilva/leilao-cucumber.git
 ```
 
+## Como rodar a aplicação
+
+Pelo IntelliJ:
+
+![](img-readme/intellij-profile-test.png)
+
+Pelo Eclipse sem o plugin do STS Tools:
+
+![](img-readme/eclipse-sem-sts-tools.png)
+
+Pelo Eclipse com o plugin do STS Tools instalado:
+
+![](img-readme/eclipse-com-sts-tools.png)
+
 ## Histórico de lançamentos
   
 * [1.0 - PROJETO INICIAL (alr)](https://github.com/ivanfsilva/leilao-cucumber/releases/tag/v1.0):
